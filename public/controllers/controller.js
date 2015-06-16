@@ -44,20 +44,21 @@ refresh();
 		});
 	};
 
-	
+	//TODO: Consider moving this inside the modal instance controller
 	$scope.update = function(){
-		$http.put('/contactList/' + $scope.contact._id, $scope.contact).success(function(response){
+		console.log($scope.contact);
+		/**$http.put('/contactList/' + $scope.contact._id, $scope.contact).success(function(response){
 			refresh();
-		});
+		});**/
 	};
 
 }]);
 
 
 contactApp.controller('contactModalInstance', ['$scope','$modalInstance', 'members', function($scope, $modalInstance, members) {
-	    //console.log(member);
-	    $scope.contact = members;
 	    
+	    $scope.contact = members;
+	    //console.log($scope.contact);
 	    $scope.ok = function(){
 	        $modalInstance.dismiss('cancel');
 	    };
