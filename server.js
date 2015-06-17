@@ -1,13 +1,14 @@
-var express =  require('express');
+var express =  require('express');	//REQUIRE EXPRESS
 
-var app = express();
-var mongojs = require('mongojs');
-var db = mongojs('contacts', ['contacts']);
-var bodyParser = require('body-parser')
+var app = express();	//CREATE AN INSTANCE OF EXPRESS APP
+var mongojs = require('mongojs');	//REQUIRE MONGOJS***
+var db = mongojs('contacts', ['contacts']);	// 
+var bodyParser = require('body-parser') //REQUIRE BODY PARSER FOR HTTP REQUESTS****
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
+//GET REQUEST TO RETRIEVE ENTIRE CONTACT LIST 
 app.get('/contactList', function(req, res){
 	console.log('I received a GET request');
 
@@ -17,6 +18,7 @@ app.get('/contactList', function(req, res){
 	});
 });
 
+//POST REQUEST TO ADD NEW CONTACT TO DATABASE
 app.post('/contactList', function(req,res){
 	console.log(req.body);
 	db.contacts.insert(req.body, function(err, doc){
@@ -24,6 +26,7 @@ app.post('/contactList', function(req,res){
 	})
 });
 
+//DELETE REQUEST TO REMOVE EXISTING CONTACT RECORD FROM DATABASE
 app.delete('/contactList/:id', function (req,res){
 	var id  = req.params.id;
 	console.log(id);
