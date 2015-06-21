@@ -16,7 +16,7 @@ The edit and update function for the application is performed through an Angular
 
 You might see this error once you start up the application on your command prompt.
 ```
-{[Error: cannot find module '../build/Release/bson'] code: ' MODEUL_NOT_FOUND'}
+{[Error: cannot find module '../build/Release/bson'] code: ' MODULE_NOT_FOUND'}
 js-bson: Failed to load c++ bson extension, using pure JS version
 ```
 
